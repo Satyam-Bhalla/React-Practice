@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, TextInput,
          Button, TouchableWithoutFeedback, Keyboard,
-        Alert } from 'react-native';
+        Alert, 
+        } from 'react-native';
 import Card from '../components/Card';
 import Input from '../components/Input';
 import NumberContainer from '../components/NumberContainer';
 import Colors from '../constants/colors';
 
 
-const StartGameScreen = () => {
+const StartGameScreen = (props) => {
     const [enteredValue,setEnteredValue] = useState('');
     const [confirmed,setConfirmed] = useState(false);
     const [selectedNumber,setSelectedNumber] = useState();
@@ -35,7 +36,7 @@ const StartGameScreen = () => {
     confirmedOutput = <Card style={styles.cardNumberContainer}> 
                         <Text>You selected</Text>
                         <NumberContainer>{selectedNumber}</NumberContainer>
-                        <Button title="START GAME" />
+                        <Button title="START GAME" onPress={() => props.onStart(selectedNumber)} />
                       </Card>;
     }
     return ( 
